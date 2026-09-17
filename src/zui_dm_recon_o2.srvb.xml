@@ -4,19 +4,19 @@
   <asx:values>
    <SRVB>
     <METADATA>
-     <NAME>ZUI_DM_RECONCILIATION_O2</NAME>
+     <NAME>ZUI_DM_RECON_O2</NAME>
      <TYPE>SRVB/SVB</TYPE>
      <DESCRIPTION>Dual Maintenance OData Service V2</DESCRIPTION>
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
-      <NAME>ZUI_DM_RECONCILIATION_O2</NAME>
+      <NAME>ZUI_DM_RECON_O2</NAME>
      </BIND_TYPE_IMPL>
      <BIND_TYPE>ODATA</BIND_TYPE>
      <BIND_TYPE_VERSION>V2</BIND_TYPE_VERSION>
      <SERVICES>
       <item>
-       <SERVICE_NAME>ZUI_DM_RECONCILIATION_O2</SERVICE_NAME>
+       <SERVICE_NAME>ZUI_DM_RECON_O2</SERVICE_NAME>
        <SERVICE_CONTENT>
         <item>
          <SERVICE_VERSION>0001</SERVICE_VERSION>
@@ -30,6 +30,7 @@
       </item>
      </SERVICES>
     </CONTENT>
+    <PUBLISHED>true</PUBLISHED>
    </SRVB>
   </asx:values>
  </asx:abap>
