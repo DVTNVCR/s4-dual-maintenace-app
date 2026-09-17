@@ -18,7 +18,7 @@ targeting SAP S/4HANA 2020 FPS02.
 6. Run behavior consistency checks and repair/regenerate behavior-pool stubs
    if the FPS02 compiler requests release-specific signatures.
 7. Activate and publish the OData V2 service binding
-   `ZUI_DM_RECONCILIATION_O2`.
+   `ZUI_DM_RECON_O2`.
 8. Run class `ZCL_DM_SEED_DATA`, ABAP Unit, ATC, and a service metadata test.
 
 The service binding is intentionally committed as unpublished. Publishing it

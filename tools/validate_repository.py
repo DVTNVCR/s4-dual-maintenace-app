@@ -57,7 +57,7 @@ required_objects = {
     "zc_dm_reconciliation.bdef.xml",
     "zbp_i_dm_reconciliation.clas.xml",
     "zui_dm_reconciliation.srvd.xml",
-    "zui_dm_reconciliation_o2.srvb.xml",
+    "zui_dm_recon_o2.srvb.xml",
 }
 for name in required_objects:
     if not (SRC / name).is_file():
