@@ -1,0 +1,46 @@
+projection;
+strict;
+use draft;
+
+define behavior for ZC_DM_Reconciliation alias Reconciliation
+{
+  use create;
+  use update;
+  use action ConfirmProductionScope;
+  use action RunReconciliation;
+  use action Reopen;
+  use action MarkReconciled;
+  use association _SourceTransports { create; with draft; }
+  use association _Exceptions       { create; with draft; }
+}
+
+define behavior for ZC_DM_SourceTransport alias SourceTransport
+{
+  use update;
+  use delete;
+  use association _Reconciliation { with draft; }
+  use association _SourceObjects  { create; with draft; }
+}
+
+define behavior for ZC_DM_SourceObject alias SourceObject
+{
+  use update;
+  use delete;
+  use association _SourceTransport { with draft; }
+  use association _Mappings        { create; with draft; }
+}
+
+define behavior for ZC_DM_Mapping alias Mapping
+{
+  use update;
+  use delete;
+  use association _SourceObject { with draft; }
+}
+
+define behavior for ZC_DM_Exception alias Exception
+{
+  use update;
+  use delete;
+  use action ApproveException;
+  use association _Reconciliation { with draft; }
+}

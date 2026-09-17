@@ -1,0 +1,28 @@
+@Metadata.layer: #CORE
+@UI.presentationVariant: [{
+  sortOrder: [{ by: 'JiraKey', direction: #ASC }],
+  visualizations: [{ type: #AS_LINEITEM }]
+}]
+annotate view ZC_DM_ExceptionReport with
+{
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  JiraKey;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  BusinessOwner;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 30 }]
+  SourceTransport;
+  @UI.lineItem: [{ position: 40 }]
+  ObjectType;
+  @UI.lineItem: [{ position: 50 }]
+  ObjectName;
+  @UI.lineItem: [{ position: 60, criticality: 'Criticality' }]
+  @UI.selectionField: [{ position: 40 }]
+  MatchStatus;
+  @UI.lineItem: [{ position: 70 }]
+  Disposition;
+  @UI.lineItem: [{ position: 80 }]
+  DeltaDetected;
+}

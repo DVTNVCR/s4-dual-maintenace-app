@@ -1,0 +1,16 @@
+@Metadata.layer: #CORE
+annotate view ZC_DM_SourceObject with
+{
+  @UI.lineItem: [{ position: 10 }]
+  PGMID;
+  @UI.lineItem: [{ position: 20 }]
+  ObjectType;
+  @UI.lineItem: [{ position: 30 }]
+  ObjectName;
+  @UI.lineItem: [{ position: 40 }]
+  NormalizedTabKey;
+  @UI.lineItem: [{ position: 50, criticality: 'DeltaCriticality' }]
+  DeltaDetected;
+  @UI.lineItem: [{ position: 60 }]
+  DeltaDescription;
+}

@@ -1,0 +1,62 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Reconciliation',
+    typeNamePlural: 'Reconciliations',
+    title: { value: 'JiraKey' },
+    description: { value: 'DeploymentRequest' }
+  },
+  presentationVariant: [{
+    sortOrder: [{ by: 'CabDate', direction: #DESC }],
+    visualizations: [{ type: #AS_LINEITEM }]
+  }]
+}
+annotate view ZC_DM_Reconciliation with
+{
+  @UI.facet: [
+    { id: 'General', type: #IDENTIFICATION_REFERENCE,
+      label: 'Request', position: 10 },
+    { id: 'Transports', type: #LINEITEM_REFERENCE,
+      label: 'Source transports', position: 20,
+      targetElement: '_SourceTransports' },
+    { id: 'Exceptions', type: #LINEITEM_REFERENCE,
+      label: 'Exceptions', position: 30,
+      targetElement: '_Exceptions' }
+  ]
+  @UI.lineItem: [{ position: 10, importance: #HIGH }]
+  @UI.identification: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  JiraKey;
+
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  @UI.identification: [{ position: 20 }]
+  DeploymentRequest;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @UI.selectionField: [{ position: 20 }]
+  CabDate;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @UI.selectionField: [{ position: 30 }]
+  DeploymentState;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  @UI.selectionField: [{ position: 40 }]
+  BusinessOwner;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  @UI.selectionField: [{ position: 50 }]
+  RiskLevel;
+
+  @UI.lineItem: [{
+    position: 70,
+    criticality: 'OverallStatusCriticality'
+  }]
+  @UI.identification: [{ position: 70 }]
+  @UI.selectionField: [{ position: 60 }]
+  OverallStatus;
+}

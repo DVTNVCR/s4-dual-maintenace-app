@@ -1,0 +1,16 @@
+@Metadata.layer: #CORE
+annotate view ZC_DM_SourceTransport with
+{
+  @UI.lineItem: [{ position: 10 }]
+  TransportID;
+  @UI.lineItem: [{ position: 20 }]
+  SourceSystem;
+  @UI.lineItem: [{ position: 30 }]
+  IsConfirmed;
+  @UI.lineItem: [{ position: 40 }]
+  ProductionImported;
+  @UI.lineItem: [{ position: 50 }]
+  ImportDate;
+  @UI.lineItem: [{ position: 60 }]
+  DeploymentState;
+}

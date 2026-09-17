@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.abap linguist-language=ABAP
+*.asbdef linguist-language=ABAP
+*.asddls linguist-language=ABAP
+*.asddlxs linguist-language=ABAP
+*.srvdsrv linguist-language=ABAP

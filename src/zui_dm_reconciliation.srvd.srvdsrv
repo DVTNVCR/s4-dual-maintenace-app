@@ -1,0 +1,11 @@
+@EndUserText.label: 'Dual Maintenance Reconciliation Service'
+define service ZUI_DM_RECONCILIATION {
+  expose ZC_DM_Reconciliation  as Reconciliations;
+  expose ZC_DM_SourceTransport as SourceTransports;
+  expose ZC_DM_SourceObject    as SourceObjects;
+  expose ZC_DM_Mapping         as Mappings;
+  expose ZC_DM_Exception       as Exceptions;
+  expose ZI_DM_TargetObject    as TargetObjects;
+  expose ZC_DM_ReconKPI        as ReconciliationKPIs;
+  expose ZC_DM_ExceptionReport as ExceptionReport;
+}

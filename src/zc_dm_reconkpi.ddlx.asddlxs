@@ -1,0 +1,54 @@
+@Metadata.layer: #CORE
+@UI.presentationVariant: [{
+  sortOrder: [{ by: 'RunTimestamp', direction: #DESC }],
+  visualizations: [{ type: #AS_CHART }, { type: #AS_LINEITEM }]
+}]
+@UI.chart: [{
+  chartType: #COLUMN,
+  dimensions: ['RunTimestamp'],
+  dimensionAttributes: [{ dimension: 'RunTimestamp', role: #CATEGORY }],
+  measures: ['ExactCount', 'MissingCount', 'MultipleCount', 'ExceptionCount'],
+  measureAttributes: [
+    { measure: 'ExactCount', role: #AXIS_1 },
+    { measure: 'MissingCount', role: #AXIS_1 },
+    { measure: 'MultipleCount', role: #AXIS_1 },
+    { measure: 'ExceptionCount', role: #AXIS_1 }
+  ]
+}]
+annotate view ZC_DM_ReconKPI with
+{
+  @UI.lineItem: [{ position: 10 }]
+  RunTimestamp;
+  @UI.dataPoint: { title: 'Approval population' }
+  @UI.lineItem: [{ position: 20 }]
+  ApprovalPopulation;
+  @UI.dataPoint: { title: 'Production deployment' }
+  @UI.lineItem: [{ position: 30 }]
+  ProductionDeployment;
+  @UI.dataPoint: { title: 'Scope validity' }
+  @UI.lineItem: [{ position: 40 }]
+  ScopeValidity;
+  @UI.dataPoint: { title: 'Transport completeness' }
+  @UI.lineItem: [{ position: 50 }]
+  TransportCompleteness;
+  @UI.dataPoint: { title: 'Object completeness' }
+  @UI.lineItem: [{ position: 60 }]
+  ObjectCompleteness;
+  @UI.dataPoint: { title: 'Implementation evidence' }
+  @UI.lineItem: [{ position: 70 }]
+  ImplementationEvidence;
+  @UI.dataPoint: { title: 'Delta detection' }
+  @UI.lineItem: [{ position: 80 }]
+  DeltaDetection;
+  @UI.dataPoint: { title: 'Exclusion governance' }
+  @UI.lineItem: [{ position: 90 }]
+  ExclusionGovernance;
+  @UI.lineItem: [{ position: 100 }]
+  ExactCount;
+  @UI.lineItem: [{ position: 110 }]
+  MissingCount;
+  @UI.lineItem: [{ position: 120 }]
+  MultipleCount;
+  @UI.lineItem: [{ position: 130 }]
+  ExceptionCount;
+}

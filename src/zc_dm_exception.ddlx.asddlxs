@@ -1,0 +1,18 @@
+@Metadata.layer: #CORE
+annotate view ZC_DM_Exception with
+{
+  @UI.lineItem: [{ position: 10 }]
+  ExceptionType;
+  @UI.lineItem: [{ position: 20 }]
+  Impact;
+  @UI.lineItem: [{ position: 30 }]
+  ExceptionOwner;
+  @UI.lineItem: [{ position: 40 }]
+  DueDate;
+  @UI.lineItem: [{ position: 50 }]
+  ApprovalState;
+  @UI.lineItem: [{ position: 60 }]
+  ApprovedBy;
+  @UI.lineItem: [{ position: 70 }]
+  ApprovalReference;
+}
