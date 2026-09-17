@@ -5,6 +5,11 @@ define behavior for ZC_DM_Reconciliation alias Reconciliation
 {
   use create;
   use update;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
   use action ConfirmProductionScope;
   use action RunReconciliation;
   use action Reopen;

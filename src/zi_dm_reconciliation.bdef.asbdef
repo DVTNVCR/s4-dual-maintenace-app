@@ -11,6 +11,11 @@ etag master LocalLastChangedAt
 {
   create;
   update;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
   field ( readonly, numbering : managed ) RequestUUID;
   field ( readonly ) CreatedBy, CreatedAt,
                      LastChangedBy, LastChangedAt, LocalLastChangedAt;
