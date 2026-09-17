@@ -16,9 +16,11 @@ etag master LocalLastChangedAt
   draft action Discard;
   draft action Resume;
   draft determine action Prepare;
+
   field ( readonly, numbering : managed ) RequestUUID;
   field ( readonly ) CreatedBy, CreatedAt,
-                     LastChangedBy, LastChangedAt, LocalLastChangedAt;
+                     LastChangedBy, LastChangedAt,
+                     LocalLastChangedAt;
   field ( mandatory ) JiraKey, DeploymentRequest, BusinessOwner;
 
   association _SourceTransports { create; with draft; }
@@ -30,25 +32,27 @@ etag master LocalLastChangedAt
   action MarkReconciled         result [1] $self;
 
   determination setInitialStatus on modify { create; }
-  validation validateApproval on save { field CabApproved, CabDate; }
-  validation validateReconciled on save { field OverallStatus; }
+  validation validateApproval on save
+    { field CabApproved, CabDate; }
+  validation validateReconciled on save
+    { field OverallStatus; }
 
   mapping for zdm_r_hdr
   {
-    RequestUUID       = request_uuid;
-    JiraKey           = jira_key;
-    DeploymentRequest = deployment_request;
-    CabApproved       = cab_approved;
-    CabDate           = cab_date;
-    DeploymentState   = deployment_state;
-    BusinessOwner     = business_owner;
-    TechnicalOwner    = technical_owner;
-    RiskLevel         = risk_level;
-    OverallStatus     = overall_status;
-    CreatedBy         = created_by;
-    CreatedAt         = created_at;
-    LastChangedBy     = last_changed_by;
-    LastChangedAt     = last_changed_at;
+    RequestUUID        = request_uuid;
+    JiraKey            = jira_key;
+    DeploymentRequest  = deployment_request;
+    CabApproved        = cab_approved;
+    CabDate            = cab_date;
+    DeploymentState    = deployment_state;
+    BusinessOwner      = business_owner;
+    TechnicalOwner     = technical_owner;
+    RiskLevel          = risk_level;
+    OverallStatus      = overall_status;
+    CreatedBy          = created_by;
+    CreatedAt          = created_at;
+    LastChangedBy      = last_changed_by;
+    LastChangedAt      = last_changed_at;
     LocalLastChangedAt = local_last_changed;
   }
 }
@@ -62,24 +66,28 @@ etag master LocalLastChangedAt
 {
   update;
   delete;
+
   field ( readonly, numbering : managed ) TransportUUID;
   field ( readonly ) RequestUUID, LocalLastChangedAt;
   field ( mandatory ) TransportID, SourceSystem;
+
   association _Reconciliation { with draft; }
   association _SourceObjects  { create; with draft; }
+
   validation validateProductionEvidence on save
     { field ProductionImported, ImportEvidence, ImportDate; }
+
   mapping for zdm_r_strn
   {
-    TransportUUID = transport_uuid;
-    RequestUUID = request_uuid;
-    TransportID = transport_id;
-    SourceSystem = source_system;
-    IsConfirmed = is_confirmed;
+    TransportUUID      = transport_uuid;
+    RequestUUID        = request_uuid;
+    TransportID        = transport_id;
+    SourceSystem       = source_system;
+    IsConfirmed        = is_confirmed;
     ProductionImported = prod_imported;
-    ImportDate = import_date;
-    ImportEvidence = import_evidence;
-    DeploymentState = deployment_state;
+    ImportDate         = import_date;
+    ImportEvidence     = import_evidence;
+    DeploymentState    = deployment_state;
     LocalLastChangedAt = local_last_changed;
   }
 }
@@ -93,27 +101,32 @@ etag master LocalLastChangedAt
 {
   update;
   delete;
+
   field ( readonly, numbering : managed ) SourceObjectUUID;
-  field ( readonly ) TransportUUID, RequestUUID, NormalizedTabKey,
-                     IdentityHash, LocalLastChangedAt;
+  field ( readonly ) TransportUUID, RequestUUID,
+                     NormalizedTabKey, IdentityHash,
+                     LocalLastChangedAt;
   field ( mandatory ) PGMID, ObjectType, ObjectName;
+
   association _Reconciliation { with draft; }
   association _SourceTransport { with draft; }
   association _Mappings        { create; with draft; }
+
   determination normalizeIdentity on modify
     { create; field PGMID, ObjectType, ObjectName, TabKey; }
+
   mapping for zdm_r_sobj
   {
-    SourceObjectUUID = source_obj_uuid;
-    TransportUUID = transport_uuid;
-    PGMID = pgmid;
-    ObjectType = object_type;
-    ObjectName = object_name;
-    TabKey = tabkey;
-    NormalizedTabKey = norm_tabkey;
-    IdentityHash = identity_hash;
-    DeltaDetected = delta_detected;
-    DeltaDescription = delta_description;
+    SourceObjectUUID   = source_obj_uuid;
+    TransportUUID      = transport_uuid;
+    PGMID              = pgmid;
+    ObjectType         = object_type;
+    ObjectName         = object_name;
+    TabKey             = tabkey;
+    NormalizedTabKey   = norm_tabkey;
+    IdentityHash       = identity_hash;
+    DeltaDetected      = delta_detected;
+    DeltaDescription   = delta_description;
     LocalLastChangedAt = local_last_changed;
   }
 }
@@ -127,26 +140,31 @@ etag master LocalLastChangedAt
 {
   update;
   delete;
+
   field ( readonly, numbering : managed ) MappingUUID;
-  field ( readonly ) SourceObjectUUID, RequestUUID, MatchStatus,
-                     LocalLastChangedAt;
+  field ( readonly ) SourceObjectUUID, RequestUUID,
+                     MatchStatus, LocalLastChangedAt;
+
   association _Reconciliation { with draft; }
   association _SourceObject { with draft; }
+
   validation validateDesignation on save
-    { field IsDesignated, TargetObjectUUID, Disposition, EvidenceComplete; }
+    { field IsDesignated, TargetObjectUUID,
+            Disposition, EvidenceComplete; }
+
   mapping for zdm_r_map
   {
-    MappingUUID = mapping_uuid;
-    SourceObjectUUID = source_obj_uuid;
-    TargetObjectUUID = target_obj_uuid;
-    MatchStatus = match_status;
-    Disposition = disposition;
-    IsDesignated = is_designated;
-    EvidenceComplete = evidence_complete;
-    EvidenceURI = evidence_uri;
-    Reviewer = reviewer;
-    ReviewedOn = reviewed_on;
-    CompletedOn = completed_on;
+    MappingUUID        = mapping_uuid;
+    SourceObjectUUID   = source_obj_uuid;
+    TargetObjectUUID   = target_obj_uuid;
+    MatchStatus        = match_status;
+    Disposition        = disposition;
+    IsDesignated       = is_designated;
+    EvidenceComplete   = evidence_complete;
+    EvidenceURI        = evidence_uri;
+    Reviewer           = reviewer;
+    ReviewedOn         = reviewed_on;
+    CompletedOn        = completed_on;
     LocalLastChangedAt = local_last_changed;
   }
 }
@@ -160,26 +178,33 @@ etag master LocalLastChangedAt
 {
   update;
   delete;
+
   field ( readonly, numbering : managed ) ExceptionUUID;
   field ( readonly ) RequestUUID, LocalLastChangedAt;
-  field ( mandatory ) ExceptionType, Impact, ExceptionOwner, DueDate;
+  field ( mandatory ) ExceptionType, Impact,
+                      ExceptionOwner, DueDate;
+
   association _Reconciliation { with draft; }
+
   action ApproveException result [1] $self;
+
   validation validateExceptionApproval on save
-    { field ApprovalState, ApprovedBy, ApprovedOn, ApprovalReference; }
+    { field ApprovalState, ApprovedBy,
+            ApprovedOn, ApprovalReference; }
+
   mapping for zdm_r_exc
   {
-    ExceptionUUID = exception_uuid;
-    RequestUUID = request_uuid;
-    SourceObjectUUID = source_obj_uuid;
-    ExceptionType = exception_type;
-    Impact = impact;
-    ExceptionOwner = exception_owner;
-    DueDate = due_date;
-    ApprovalState = approval_state;
-    ApprovedBy = approved_by;
-    ApprovedOn = approved_on;
-    ApprovalReference = approval_reference;
+    ExceptionUUID      = exception_uuid;
+    RequestUUID        = request_uuid;
+    SourceObjectUUID   = source_obj_uuid;
+    ExceptionType      = exception_type;
+    Impact             = impact;
+    ExceptionOwner     = exception_owner;
+    DueDate            = due_date;
+    ApprovalState      = approval_state;
+    ApprovedBy         = approved_by;
+    ApprovedOn         = approved_on;
+    ApprovalReference  = approval_reference;
     LocalLastChangedAt = local_last_changed;
   }
 }
