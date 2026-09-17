@@ -87,16 +87,17 @@ etag master LocalLastChangedAt
 define behavior for ZI_DM_SourceObject alias SourceObject
 persistent table zdm_r_sobj
 draft table zdm_r_sobj_d
-lock dependent by _SourceTransport
-authorization dependent by _SourceTransport
+lock dependent by _Reconciliation
+authorization dependent by _Reconciliation
 etag master LocalLastChangedAt
 {
   update;
   delete;
   field ( readonly, numbering : managed ) SourceObjectUUID;
-  field ( readonly ) TransportUUID, NormalizedTabKey,
+  field ( readonly ) TransportUUID, RequestUUID, NormalizedTabKey,
                      IdentityHash, LocalLastChangedAt;
   field ( mandatory ) PGMID, ObjectType, ObjectName;
+  ancestor association _Reconciliation { with draft; }
   association _SourceTransport { with draft; }
   association _Mappings        { create; with draft; }
   determination normalizeIdentity on modify
@@ -120,15 +121,16 @@ etag master LocalLastChangedAt
 define behavior for ZI_DM_Mapping alias Mapping
 persistent table zdm_r_map
 draft table zdm_r_map_d
-lock dependent by _SourceObject
-authorization dependent by _SourceObject
+lock dependent by _Reconciliation
+authorization dependent by _Reconciliation
 etag master LocalLastChangedAt
 {
   update;
   delete;
   field ( readonly, numbering : managed ) MappingUUID;
-  field ( readonly ) SourceObjectUUID, MatchStatus,
+  field ( readonly ) SourceObjectUUID, RequestUUID, MatchStatus,
                      LocalLastChangedAt;
+  ancestor association _Reconciliation { with draft; }
   association _SourceObject { with draft; }
   validation validateDesignation on save
     { field IsDesignated, TargetObjectUUID, Disposition, EvidenceComplete; }
