@@ -97,7 +97,7 @@ etag master LocalLastChangedAt
   field ( readonly ) TransportUUID, RequestUUID, NormalizedTabKey,
                      IdentityHash, LocalLastChangedAt;
   field ( mandatory ) PGMID, ObjectType, ObjectName;
-  ancestor association _Reconciliation { with draft; }
+  association _Reconciliation { with draft; }
   association _SourceTransport { with draft; }
   association _Mappings        { create; with draft; }
   determination normalizeIdentity on modify
@@ -130,7 +130,7 @@ etag master LocalLastChangedAt
   field ( readonly, numbering : managed ) MappingUUID;
   field ( readonly ) SourceObjectUUID, RequestUUID, MatchStatus,
                      LocalLastChangedAt;
-  ancestor association _Reconciliation { with draft; }
+  association _Reconciliation { with draft; }
   association _SourceObject { with draft; }
   validation validateDesignation on save
     { field IsDesignated, TargetObjectUUID, Disposition, EvidenceComplete; }
