@@ -9,7 +9,7 @@ annotate view ZC_DM_SourceObject with
   ObjectName;
   @UI.lineItem: [{ position: 40 }]
   NormalizedTabKey;
-  @UI.lineItem: [{ position: 50, criticality: 'DeltaCriticality' }]
+  @UI.lineItem: [{ position: 50 }]
   DeltaDetected;
   @UI.lineItem: [{ position: 60 }]
   DeltaDescription;

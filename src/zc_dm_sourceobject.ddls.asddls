@@ -12,10 +12,6 @@ define view entity ZC_DM_SourceObject
       TabKey,
       NormalizedTabKey,
       DeltaDetected,
-      case DeltaDetected
-        when 'X' then 1
-        else 3
-      end as DeltaCriticality,
       DeltaDescription,
       LocalLastChangedAt,
       _SourceTransport : redirected to parent ZC_DM_SourceTransport,

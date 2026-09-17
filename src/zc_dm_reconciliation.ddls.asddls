@@ -14,12 +14,6 @@ define root view entity ZC_DM_Reconciliation
       TechnicalOwner,
       RiskLevel,
       OverallStatus,
-      case OverallStatus
-        when 'RECONCILED' then 3
-        when 'IN_REVIEW' then 2
-        when 'SCOPE_CONFIRMED' then 2
-        else 1
-      end as OverallStatusCriticality,
       CreatedBy,
       CreatedAt,
       LastChangedBy,

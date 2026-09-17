@@ -52,10 +52,7 @@ annotate view ZC_DM_Reconciliation with
   @UI.selectionField: [{ position: 50 }]
   RiskLevel;
 
-  @UI.lineItem: [{
-    position: 70,
-    criticality: 'OverallStatusCriticality'
-  }]
+  @UI.lineItem: [{ position: 70 }]
   @UI.identification: [{ position: 70 }]
   @UI.selectionField: [{ position: 60 }]
   OverallStatus;
