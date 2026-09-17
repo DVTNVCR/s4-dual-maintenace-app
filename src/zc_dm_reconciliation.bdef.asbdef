@@ -1,5 +1,4 @@
 projection;
-strict;
 use draft;
 
 define behavior for ZC_DM_Reconciliation alias Reconciliation

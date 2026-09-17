@@ -1,5 +1,4 @@
 managed implementation in class zbp_i_dm_reconciliation unique;
-strict;
 with draft;
 
 define behavior for ZI_DM_Reconciliation alias Reconciliation
