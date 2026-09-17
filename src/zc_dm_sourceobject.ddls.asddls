@@ -6,6 +6,7 @@ define view entity ZC_DM_SourceObject
 {
   key SourceObjectUUID,
       TransportUUID,
+      RequestUUID,
       PGMID,
       ObjectType,
       ObjectName,
@@ -14,6 +15,7 @@ define view entity ZC_DM_SourceObject
       DeltaDetected,
       DeltaDescription,
       LocalLastChangedAt,
+      _Reconciliation  : redirected to ZC_DM_Reconciliation,
       _SourceTransport : redirected to parent ZC_DM_SourceTransport,
       _Mappings        : redirected to composition child ZC_DM_Mapping
 }

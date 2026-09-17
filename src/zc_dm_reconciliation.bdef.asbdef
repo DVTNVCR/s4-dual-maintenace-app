@@ -1,55 +1,52 @@
-unmanaged implementation in class zbp_c_dm_reconciliation unique;
+projection;
+use draft;
 
-define behavior for ZC_DM_Reconciliation //alias <alias_name>
-//late numbering
-//lock master
-//etag master <field_name>
+define behavior for ZC_DM_Reconciliation alias Reconciliation
 {
-  create;
-  update;
-  delete;
-  association _Exceptions { create; }
-  association _SourceTransports { create; }
+  use create;
+  use update;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action ConfirmProductionScope;
+  use action RunReconciliation;
+  use action Reopen;
+  use action MarkReconciled;
+  use association _SourceTransports { create; with draft; }
+  use association _Exceptions       { create; with draft; }
 }
 
-define behavior for ZC_DM_Exception //alias <alias_name>
-//late numbering
-//lock dependent by <association>
-//etag master <field_name>
+define behavior for ZC_DM_SourceTransport alias SourceTransport
 {
-  create;
-  update;
-  delete;
+  use update;
+  use delete;
+  use association _Reconciliation { with draft; }
+  use association _SourceObjects  { create; with draft; }
 }
 
-define behavior for ZC_DM_SourceTransport //alias <alias_name>
-//late numbering
-//lock dependent by <association>
-//etag master <field_name>
+define behavior for ZC_DM_SourceObject alias SourceObject
 {
-  create;
-  update;
-  delete;
-  association _SourceObjects { create; }
+  use update;
+  use delete;
+  use association _Reconciliation  { with draft; }
+  use association _SourceTransport { with draft; }
+  use association _Mappings        { create; with draft; }
 }
 
-define behavior for ZC_DM_SourceObject //alias <alias_name>
-//late numbering
-//lock dependent by <association>
-//etag master <field_name>
+define behavior for ZC_DM_Mapping alias Mapping
 {
-  create;
-  update;
-  delete;
-  association _Mappings { create; }
+  use update;
+  use delete;
+  use association _Reconciliation { with draft; }
+  use association _SourceObject   { with draft; }
 }
 
-define behavior for ZC_DM_Mapping //alias <alias_name>
-//late numbering
-//lock dependent by <association>
-//etag master <field_name>
+define behavior for ZC_DM_Exception alias Exception
 {
-  create;
-  update;
-  delete;
+  use update;
+  use delete;
+  use action ApproveException;
+  use association _Reconciliation { with draft; }
 }

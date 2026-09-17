@@ -6,6 +6,7 @@ define view entity ZC_DM_Mapping
 {
   key MappingUUID,
       SourceObjectUUID,
+      RequestUUID,
       TargetObjectUUID,
       MatchStatus,
       Disposition,
@@ -16,6 +17,7 @@ define view entity ZC_DM_Mapping
       ReviewedOn,
       CompletedOn,
       LocalLastChangedAt,
+      _Reconciliation : redirected to ZC_DM_Reconciliation,
       _SourceObject : redirected to parent ZC_DM_SourceObject,
       _TargetObject
 }
